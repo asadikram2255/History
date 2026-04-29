@@ -1022,7 +1022,7 @@
         }
 
         /* ── Admin-only elements (hidden until logged in) ── */
-        .admin-only { display: none !important; }
+        body:not(.admin-mode) .admin-only { display: none !important; }
 
         /* ── Admin login modal ── */
         .admin-login-input {
@@ -3664,6 +3664,13 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
         // Keyboard shortcuts
         function initializeKeyboardShortcuts() {
             document.addEventListener('keydown', (e) => {
+                // Ctrl+Shift+L — open admin login from anywhere
+                if (e.ctrlKey && e.shiftKey && e.key === 'L') {
+                    e.preventDefault();
+                    if (!isAdmin) showAdminLogin();
+                    return;
+                }
+
                 // Check if the active element is an input or textarea
                 const activeElement = document.activeElement;
                 const isInputFocused = activeElement.tagName === 'INPUT' || activeElement.tagName === 'TEXTAREA';
@@ -3804,9 +3811,7 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
         // ── Admin auth ──
         function setAdminUI(loggedIn) {
             isAdmin = loggedIn;
-            document.querySelectorAll('.admin-only').forEach(el => {
-                el.style.setProperty('display', loggedIn ? '' : 'none', 'important');
-            });
+            document.body.classList.toggle('admin-mode', loggedIn);
             // Re-render cards so ⋮ menus appear/disappear
             updateDisplay(currentYear);
         }
