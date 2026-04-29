@@ -1020,6 +1020,29 @@
             .content-area { flex-direction: column; padding: 10px; gap: 10px; overflow: visible; }
             .column { min-height: 280px; max-height: 380px; }
         }
+
+        /* ── Admin-only elements (hidden until logged in) ── */
+        .admin-only { display: none !important; }
+
+        /* ── Admin login modal ── */
+        .admin-login-input {
+            width: 100%;
+            margin-top: 8px;
+            padding: 9px 12px;
+            border-radius: 6px;
+            border: 1px solid #FFD700;
+            background: rgba(255,255,255,0.1);
+            color: white;
+            font-size: 14px;
+        }
+        .admin-login-input::placeholder { color: rgba(255,255,255,0.5); }
+        .admin-login-input:focus { outline: none; background: rgba(255,255,255,0.15); }
+        #adminLoginError { color: #ff6b6b; font-size: 13px; margin-top: 10px; display: none; }
+        .logout-btn {
+            background: rgba(220,53,69,0.85) !important;
+            color: white !important;
+        }
+        .logout-btn:hover { background: rgba(220,53,69,1) !important; }
     </style>
 </head>
 <body>
@@ -1045,8 +1068,9 @@
                         <input type="text" id="yearSearchInput" class="search-input" placeholder="Search by name...">
                         <button id="searchButton" class="add-data-button">Search</button>
                     </div>
-                    <button id="saveHtmlButton" class="add-data-button">Save HTML</button>
-                    <button id="openAddDataModal" class="add-data-button">Add Data</button>
+                    <button id="saveHtmlButton" class="add-data-button admin-only">Save HTML</button>
+                    <button id="openAddDataModal" class="add-data-button admin-only">Add Data</button>
+                    <button id="adminLogoutBtn" class="add-data-button admin-only logout-btn">Logout</button>
                     <button class="shortcut-hint-btn" id="shortcutHintBtn" title="Keyboard shortcuts">?</button>
                 </div>
             </div>
@@ -1360,7 +1384,27 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
         </div>
     </div>
 
+    <!-- Firebase SDK (compat — works with plain script tags) -->
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
+
     <script>
+        // ── Firebase setup ──
+        const _firebaseConfig = {
+            apiKey: "AIzaSyAwOPIbrurzp2c8G0EUn5UlWeO7QD3NElk",
+            authDomain: "history-timeline-208db.firebaseapp.com",
+            projectId: "history-timeline-208db",
+            storageBucket: "history-timeline-208db.firebasestorage.app",
+            messagingSenderId: "453537939114",
+            appId: "1:453537939114:web:7848aa7f1ed876b4bd5ad3"
+        };
+        firebase.initializeApp(_firebaseConfig);
+        const db = firebase.firestore();
+        const auth = firebase.auth();
+        const ADMIN_EMAIL = 'asadikram2255@gmail.com';
+        let isAdmin = false;
+
         // Utility Functions
         function formatYear(year) {
             if (year === 9999) return 'Present'; // Special case for 'Present'
@@ -2887,21 +2931,30 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
             return events;
         }
 
-        function saveToLocalStorage() {
-            try { localStorage.setItem('timelineData', JSON.stringify(rawData.filter(i => !i.isGenerated))); } catch(e) {}
+        function saveToFirestore() {
+            if (!isAdmin) return;
+            const items = rawData.filter(i => !i.isGenerated);
+            db.collection('timeline').doc('data').set({ items })
+                .catch(e => console.error('Firestore save failed:', e));
         }
 
-        function initializeData() {
-            // Load user-saved data from localStorage if present
+        async function initializeData() {
             try {
-                const saved = localStorage.getItem('timelineData');
-                if (saved) rawData = JSON.parse(saved);
-            } catch(e) {}
-            // Filter out previously generated events before regenerating
-            const nonGeneratedRawData = rawData.filter(item => !item.isGenerated);
-            const personalities = nonGeneratedRawData.filter(item => item.type === 'personality');
+                const snap = await db.collection('timeline').doc('data').get();
+                if (snap.exists && snap.data().items && snap.data().items.length > 0) {
+                    rawData = snap.data().items;
+                }
+            } catch(e) {
+                console.warn('Firestore unavailable, using built-in data:', e);
+            }
+            rebuildData();
+        }
+
+        function rebuildData() {
+            const nonGenerated = rawData.filter(item => !item.isGenerated);
+            const personalities = nonGenerated.filter(item => item.type === 'personality');
             const generatedEvents = generatePersonalityEvents(personalities);
-            data = [...nonGeneratedRawData, ...generatedEvents];
+            data = [...nonGenerated, ...generatedEvents];
         }
 
         function cacheElements() {
@@ -3114,8 +3167,9 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
             elements.yearDisplay.textContent = formatYear(year);
         }
 
-        // Function to create the dots menu HTML
+        // Function to create the dots menu HTML (only for admins)
         function createDotsMenu(itemIndex) {
+            if (!isAdmin) return '';
             return `
                 <div class="item-actions">
                     <button class="dots-button" onclick="toggleDropdown(this, event)">⋮</button>
@@ -3200,12 +3254,12 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
         window.deleteItem = function(index) {
             if (confirm('Are you sure you want to delete this item?')) {
                 rawData.splice(index, 1);
-                saveToLocalStorage();
-                initializeData();
-                calculateEventYears(); // Recalculate event years
-                createTimelineMarkers(); // Re-render timeline markers
-                updateDisplay(currentYear); // Refresh display
-                document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.remove('active')); // Close dropdown
+                saveToFirestore();
+                rebuildData();
+                calculateEventYears();
+                createTimelineMarkers();
+                updateDisplay(currentYear);
+                document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.remove('active'));
             }
         };
 
@@ -3426,11 +3480,11 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
                 } else {
                     rawData.push(newItem);
                 }
-                saveToLocalStorage();
-                initializeData();
-                calculateEventYears(); // Recalculate event years
-                createTimelineMarkers(); // Re-render timeline markers
-                updateDisplay(currentYear); // Refresh display
+                saveToFirestore();
+                rebuildData();
+                calculateEventYears();
+                createTimelineMarkers();
+                updateDisplay(currentYear);
                 elements.addDataModal.style.display = 'none';
                 e.target.reset();
                 elements.addDataEnd.removeAttribute('disabled'); // Re-enable for next add
@@ -3747,6 +3801,84 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
         }
 
 
+        // ── Admin auth ──
+        function setAdminUI(loggedIn) {
+            isAdmin = loggedIn;
+            document.querySelectorAll('.admin-only').forEach(el => {
+                el.style.setProperty('display', loggedIn ? '' : 'none', 'important');
+            });
+            // Re-render cards so ⋮ menus appear/disappear
+            updateDisplay(currentYear);
+        }
+
+        function showAdminLogin() {
+            document.getElementById('adminLoginOverlay').classList.add('active');
+            document.getElementById('adminEmail').value = '';
+            document.getElementById('adminPassword').value = '';
+            document.getElementById('adminLoginError').style.display = 'none';
+        }
+
+        function hideAdminLogin() {
+            document.getElementById('adminLoginOverlay').classList.remove('active');
+        }
+
+        function checkAdminHash() {
+            if (location.hash === '#admin') {
+                if (!isAdmin) showAdminLogin();
+                else history.replaceState(null, '', '#year=' + currentYear);
+            }
+        }
+
+        function initializeAuth() {
+            // Watch auth state — persists across page refreshes automatically
+            auth.onAuthStateChanged(async user => {
+                if (user && user.email === ADMIN_EMAIL) {
+                    // First login: seed Firestore if still empty
+                    const snap = await db.collection('timeline').doc('data').get();
+                    if (!snap.exists || !snap.data().items || snap.data().items.length === 0) {
+                        db.collection('timeline').doc('data').set({ items: rawData.filter(i => !i.isGenerated) });
+                    }
+                    setAdminUI(true);
+                } else {
+                    setAdminUI(false);
+                }
+            });
+
+            // Login button
+            document.getElementById('adminLoginBtn').addEventListener('click', async () => {
+                const email = document.getElementById('adminEmail').value.trim();
+                const pass  = document.getElementById('adminPassword').value;
+                const errEl = document.getElementById('adminLoginError');
+                errEl.style.display = 'none';
+                try {
+                    await auth.signInWithEmailAndPassword(email, pass);
+                    hideAdminLogin();
+                    history.replaceState(null, '', '#year=' + currentYear);
+                } catch(e) {
+                    errEl.textContent = 'Incorrect email or password.';
+                    errEl.style.display = 'block';
+                }
+            });
+
+            // Allow Enter key on password field
+            document.getElementById('adminPassword').addEventListener('keydown', e => {
+                if (e.key === 'Enter') document.getElementById('adminLoginBtn').click();
+            });
+
+            // Logout button
+            document.getElementById('adminLogoutBtn').addEventListener('click', () => auth.signOut());
+
+            // Close login overlay
+            document.getElementById('closeAdminLogin').addEventListener('click', hideAdminLogin);
+            document.getElementById('adminLoginOverlay').addEventListener('click', e => {
+                if (e.target === document.getElementById('adminLoginOverlay')) hideAdminLogin();
+            });
+
+            // Handle #admin hash on load and navigation
+            checkAdminHash();
+            window.addEventListener('hashchange', checkAdminHash);
+        }
+
         function initializeShortcutModal() {
             const btn = document.getElementById('shortcutHintBtn');
             const overlay = document.getElementById('shortcutOverlay');
@@ -3758,9 +3890,9 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
         }
 
         // Initialize everything
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', async function() {
             cacheElements();
-            initializeData();
+            await initializeData();      // async: loads from Firestore first
             calculateEventYears();
             createTimelineMarkers();
             initializeSlider();
@@ -3771,7 +3903,7 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
             initializeSaveHtml();
             initializeFullListModal();
             initializeShortcutModal();
-            // Read year from URL hash, fall back to default
+            initializeAuth();            // sets up login/logout + restores session
             const hashMatch = location.hash.match(/^#year=(-?\d+)$/);
             if (hashMatch) currentYear = parseInt(hashMatch[1], 10);
             jumpToYear(currentYear);
@@ -3939,6 +4071,24 @@ function isYearInRange(selectedYear, startYear, startEra, endYear, endEra) {
 }
 </script>
 
+
+<!-- Admin Login Modal -->
+<div class="shortcut-overlay" id="adminLoginOverlay">
+    <div class="shortcut-box" style="min-width:340px;">
+        <button class="close-button" id="closeAdminLogin" style="position:absolute;top:12px;right:16px;font-size:26px;">×</button>
+        <h3>Admin Login</h3>
+        <div class="form-group" style="margin-top:16px;">
+            <label class="form-label">Email</label>
+            <input type="email" id="adminEmail" class="admin-login-input" placeholder="Email">
+        </div>
+        <div class="form-group" style="margin-top:12px;">
+            <label class="form-label">Password</label>
+            <input type="password" id="adminPassword" class="admin-login-input" placeholder="Password">
+        </div>
+        <div id="adminLoginError"></div>
+        <button id="adminLoginBtn" class="submit-button" style="margin-top:18px;">Login</button>
+    </div>
+</div>
 
 <!-- Keyboard Shortcut Hint Modal -->
 <div class="shortcut-overlay" id="shortcutOverlay">
