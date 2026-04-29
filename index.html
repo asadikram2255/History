@@ -908,6 +908,118 @@
             color: rgba(255, 255, 255, 0.8);
             padding-left: 5px;
         }
+
+        /* ── Category filter chips ── */
+        .filter-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            padding: 8px 15px;
+            background: rgba(0,0,0,0.15);
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            min-height: 38px;
+        }
+        .filter-chip {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid rgba(255,255,255,0.3);
+            color: rgba(255,255,255,0.8);
+            border-radius: 20px;
+            padding: 3px 11px;
+            font-size: 11px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            white-space: nowrap;
+        }
+        .filter-chip:hover { background: rgba(255,255,255,0.2); }
+        .filter-chip.active {
+            background: #FFD700;
+            color: #1e3c72;
+            border-color: #FFD700;
+            font-weight: bold;
+        }
+
+        /* ── Keyboard shortcut hint button ── */
+        .shortcut-hint-btn {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.4);
+            color: white;
+            border-radius: 50%;
+            width: 34px;
+            height: 34px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.2s ease;
+            flex-shrink: 0;
+        }
+        .shortcut-hint-btn:hover {
+            background: rgba(255,215,0,0.3);
+            border-color: #FFD700;
+        }
+
+        /* ── Shortcut hint modal ── */
+        .shortcut-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            align-items: center;
+            justify-content: center;
+        }
+        .shortcut-overlay.active { display: flex; }
+        .shortcut-box {
+            background: linear-gradient(135deg, #1e3c72, #2a5298);
+            border-radius: 14px;
+            padding: 28px 32px;
+            min-width: 320px;
+            max-width: 420px;
+            color: white;
+            position: relative;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .shortcut-box h3 { color: #FFD700; margin-bottom: 18px; font-size: 18px; }
+        .shortcut-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 9px 0;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            font-size: 14px;
+            gap: 16px;
+        }
+        .shortcut-row:last-child { border-bottom: none; }
+        kbd {
+            background: rgba(255,255,255,0.15);
+            border: 1px solid rgba(255,255,255,0.35);
+            border-radius: 4px;
+            padding: 2px 8px;
+            font-size: 12px;
+            font-family: monospace;
+            white-space: nowrap;
+        }
+
+        /* ── Mobile responsive ── */
+        @media (max-width: 900px) {
+            body { overflow: auto; }
+            .app-container { height: auto; min-height: 100vh; }
+            .top-header { padding: 12px 10px; }
+            .app-title { font-size: 20px; padding-left: 8px; }
+            .header-top-row { flex-wrap: wrap; gap: 8px; }
+            .add-data-tab { gap: 6px; flex-wrap: wrap; }
+            .search-input { width: 110px; }
+            .search-input:focus { width: 140px; }
+            .go-to-year-input { width: 75px; }
+            .go-to-year-input:focus { width: 90px; }
+            .add-data-button { padding: 8px 12px; font-size: 13px; }
+            .current-year { font-size: 24px; }
+            .slider-wrapper { width: 100%; margin: 0; }
+            .content-area { flex-direction: column; padding: 10px; gap: 10px; overflow: visible; }
+            .column { min-height: 280px; max-height: 380px; }
+        }
     </style>
 </head>
 <body>
@@ -935,6 +1047,7 @@
                     </div>
                     <button id="saveHtmlButton" class="add-data-button">Save HTML</button>
                     <button id="openAddDataModal" class="add-data-button">Add Data</button>
+                    <button class="shortcut-hint-btn" id="shortcutHintBtn" title="Keyboard shortcuts">?</button>
                 </div>
             </div>
 
@@ -967,6 +1080,7 @@
                     <div class="column-subtitle" id="erasSubtitle">Active in 470 BCE</div>
                     <div class="column-count" id="erasCount">2 active eras</div>
                 </div>
+                <div class="filter-bar" id="erasFilterBar"></div>
                 <div class="column-body" id="erasContent">
                 <div class="timeline-item era-item non-muslim-rulers">
                     
@@ -1006,6 +1120,7 @@
                     <div class="column-subtitle" id="eventsSubtitle">Events in 470 BCE</div>
                     <div class="column-count" id="eventsCount">0 events</div>
                 </div>
+                <div class="filter-bar" id="eventsFilterBar"></div>
                 <div class="column-body" id="eventsContent"><div class="no-data">No recorded events for this year</div></div>
             </div>
 
@@ -1016,6 +1131,7 @@
                     <div class="column-subtitle" id="warsSubtitle">Active or starting in 470 BCE</div>
                     <div class="column-count" id="warsCount">0 wars</div>
                 </div>
+                <div class="filter-bar" id="warsFilterBar"></div>
                 <div class="column-body" id="warsContent"><div class="no-data">No recorded wars for this period</div></div>
             </div>
 
@@ -1025,6 +1141,7 @@
                     <div class="column-subtitle" id="personalitiesSubtitle">Alive in 470 BCE</div>
                     <div class="column-count" id="personalitiesCount">1 individual</div>
                 </div>
+                <div class="filter-bar" id="personalitiesFilterBar"></div>
                 <div class="column-body" id="personalitiesContent">
                 <div class="timeline-item person-item custom-personality">
                     
@@ -1069,6 +1186,17 @@ Accused of "corrupting the youth" and mocking traditional gods, leading to his t
             <div class="form-group">
                 <label for="addDataName" class="form-label">Name / Title</label>
                 <input id="addDataName" name="name" type="text" required="" maxlength="100" class="form-input">
+            </div>
+            <div class="form-group" id="categoryGroup" style="display:none;">
+                <label for="addDataCategory" class="form-label">Category</label>
+                <select id="addDataCategory" class="form-select">
+                    <option value="custom-personality">Custom</option>
+                    <option value="prophets">Prophet</option>
+                    <option value="ahl-e-bait">Ahl-e-Bait</option>
+                    <option value="rulers">Ruler</option>
+                    <option value="scholars">Scholar</option>
+                    <option value="scientists">Scientist</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="addDataStart" class="form-label">Start Date / Birth Date</label>
@@ -1243,6 +1371,56 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
         function formatYearRange(start, end) {
             const endYearFormatted = formatYear(end);
             return `${formatYear(start)} - ${endYearFormatted}`;
+        }
+
+        // XSS-safe helpers
+        function escapeHtml(str) {
+            if (str == null) return '';
+            return String(str)
+                .replace(/&/g, '&amp;')
+                .replace(/</g, '&lt;')
+                .replace(/>/g, '&gt;')
+                .replace(/"/g, '&quot;')
+                .replace(/'/g, '&#39;');
+        }
+        function safeDesc(str) {
+            return escapeHtml(str).replace(/\n/g, '<br>');
+        }
+
+        // Category filter state
+        const columnFilters = { era: new Set(), event: new Set(), war: new Set(), personality: new Set() };
+
+        window.toggleFilter = function(type, category) {
+            if (columnFilters[type].has(category)) {
+                columnFilters[type].delete(category);
+            } else {
+                columnFilters[type].add(category);
+            }
+            updateDisplay(currentYear);
+        };
+
+        function getCategoryLabel(cat) {
+            const labels = {
+                'non-muslim-rulers': 'Non-Muslim', 'muslim-caliphates': 'Muslim Caliphates',
+                'ahl-e-bait': 'Ahl-e-Bait', 'rulers': 'Rulers', 'scholars': 'Scholars',
+                'prophets': 'Prophets', 'scientists': 'Scientists',
+                'custom-personality': 'Custom', 'custom-era': 'Custom',
+                'political': 'Political', 'religious': 'Religious',
+                'conquest': 'Conquest', 'military': 'Military',
+                'construction': 'Construction', 'custom-war': 'Wars',
+                'custom-event': 'Custom', 'birth': 'Birth', 'death': 'Death'
+            };
+            return labels[cat] || cat.replace(/-/g, ' ').replace(/\b\w/g, c => c.toUpperCase());
+        }
+
+        function renderFilterChips(barId, type, categories) {
+            const bar = document.getElementById(barId);
+            if (!bar) return;
+            if (categories.length < 2) { bar.style.display = 'none'; return; }
+            bar.style.display = '';
+            bar.innerHTML = categories.map(cat =>
+                `<button class="filter-chip ${columnFilters[type].has(cat) ? 'active' : ''}" onclick="toggleFilter('${type}','${escapeHtml(cat)}')">${getCategoryLabel(cat)}</button>`
+            ).join('');
         }
 
         // Core data (without duplicate events)
@@ -2709,7 +2887,16 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
             return events;
         }
 
+        function saveToLocalStorage() {
+            try { localStorage.setItem('timelineData', JSON.stringify(rawData.filter(i => !i.isGenerated))); } catch(e) {}
+        }
+
         function initializeData() {
+            // Load user-saved data from localStorage if present
+            try {
+                const saved = localStorage.getItem('timelineData');
+                if (saved) rawData = JSON.parse(saved);
+            } catch(e) {}
             // Filter out previously generated events before regenerating
             const nonGeneratedRawData = rawData.filter(item => !item.isGenerated);
             const personalities = nonGeneratedRawData.filter(item => item.type === 'personality');
@@ -2914,10 +3101,11 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
         }
 
         function updateDisplay(year) {
+            history.replaceState(null, '', '#year=' + year);
             updateYearDisplay(year);
             updateEras(year);
             updateEvents(year);
-            updateWars(year); // Update Wars
+            updateWars(year);
             updatePersonalities(year);
             updateArrowStates();
         }
@@ -2991,17 +3179,29 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
                 elements.addDataEndEra.removeAttribute('disabled');
             }
 
+            // Show/hide personality category selector
+            const catGroup = document.getElementById('categoryGroup');
+            if (catGroup) {
+                if (item.type === 'personality') {
+                    catGroup.style.display = 'block';
+                    document.getElementById('addDataCategory').value = item.category || 'custom-personality';
+                } else {
+                    catGroup.style.display = 'none';
+                }
+            }
+
             // Disable section selection during edit to prevent type changes
             elements.addDataSection.setAttribute('disabled', 'disabled');
 
             elements.addDataModal.style.display = 'block';
-            document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.remove('active')); // Close dropdown
+            document.querySelectorAll('.dropdown-menu').forEach(menu => menu.classList.remove('active'));
         };
 
         window.deleteItem = function(index) {
             if (confirm('Are you sure you want to delete this item?')) {
-                rawData.splice(index, 1); // Remove item from rawData
-                initializeData(); // Re-initialize data to regenerate events and update 'data' array
+                rawData.splice(index, 1);
+                saveToLocalStorage();
+                initializeData();
                 calculateEventYears(); // Recalculate event years
                 createTimelineMarkers(); // Re-render timeline markers
                 updateDisplay(currentYear); // Refresh display
@@ -3011,11 +3211,15 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
 
 
         function updateEras(year) {
-            const activeEras = rawData.map((item, index) => ({ ...item, originalIndex: index })).filter(item =>
+            const allCats = [...new Set(rawData.filter(i => i.type === 'era').map(i => i.category))].filter(Boolean);
+            renderFilterChips('erasFilterBar', 'era', allCats);
+
+            let activeEras = rawData.map((item, index) => ({ ...item, originalIndex: index })).filter(item =>
                 item.type === 'era' &&
                 year >= Math.max(item.startYear, minYear) &&
                 year <= Math.min(item.endYear ?? maxYear, maxYear)
             );
+            if (columnFilters.era.size > 0) activeEras = activeEras.filter(i => columnFilters.era.has(i.category));
 
             elements.erasCount.textContent = `${activeEras.length} active era${activeEras.length !== 1 ? 's' : ''}`;
             elements.erasSubtitle.textContent = `Active in ${formatYear(year)}`;
@@ -3026,20 +3230,23 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
             }
 
             elements.erasContent.innerHTML = activeEras.map(era => `
-                <div class="timeline-item era-item ${era.category}">
+                <div class="timeline-item era-item ${escapeHtml(era.category)}">
                     ${createDotsMenu(era.originalIndex)}
-                    <div class="item-title">${era.name}</div>
+                    <div class="item-title">${escapeHtml(era.name)}</div>
                     <div class="item-subtitle">${formatYearRange(era.startYear, era.endYear)}</div>
-                    <div class="item-description">${era.description}</div>
+                    <div class="item-description">${safeDesc(era.description)}</div>
                 </div>
             `).join('');
         }
 
         function updateEvents(year) {
-            // Filter rawData for events, excluding generated birth/death events for direct editing/deletion
-            const yearEvents = rawData.map((item, index) => ({ ...item, originalIndex: index })).filter(item =>
+            const allCats = [...new Set(rawData.filter(i => i.type === 'event' && !i.isGenerated).map(i => i.category))].filter(Boolean);
+            renderFilterChips('eventsFilterBar', 'event', allCats);
+
+            let yearEvents = rawData.map((item, index) => ({ ...item, originalIndex: index })).filter(item =>
                 item.type === 'event' && item.startYear === year && !item.isGenerated
             );
+            if (columnFilters.event.size > 0) yearEvents = yearEvents.filter(i => columnFilters.event.has(i.category));
 
             elements.eventsCount.textContent = `${yearEvents.length} event${yearEvents.length !== 1 ? 's' : ''}`;
             elements.eventsSubtitle.textContent = `Events in ${formatYear(year)}`;
@@ -3050,22 +3257,25 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
             }
 
             elements.eventsContent.innerHTML = yearEvents.map(event => `
-                <div class="timeline-item event-item ${event.category}">
+                <div class="timeline-item event-item ${escapeHtml(event.category)}">
                     ${createDotsMenu(event.originalIndex)}
                     <div class="item-title">${formatYear(event.startYear)}</div>
-                    <div class="item-subtitle">${event.name}</div>
-                    <div class="item-description">${event.description}</div>
+                    <div class="item-subtitle">${escapeHtml(event.name)}</div>
+                    <div class="item-description">${safeDesc(event.description)}</div>
                 </div>
             `).join('');
         }
 
-        // NEW: updateWars function
         function updateWars(year) {
-            const activeWars = rawData.map((item, index) => ({ ...item, originalIndex: index })).filter(item =>
+            const allCats = [...new Set(rawData.filter(i => i.type === 'war').map(i => i.category))].filter(Boolean);
+            renderFilterChips('warsFilterBar', 'war', allCats);
+
+            let activeWars = rawData.map((item, index) => ({ ...item, originalIndex: index })).filter(item =>
                 item.type === 'war' &&
                 year >= Math.max(item.startYear, minYear) &&
                 year <= Math.min(item.endYear ?? maxYear, maxYear)
             );
+            if (columnFilters.war.size > 0) activeWars = activeWars.filter(i => columnFilters.war.has(i.category));
 
             elements.warsCount.textContent = `${activeWars.length} war${activeWars.length !== 1 ? 's' : ''}`;
             elements.warsSubtitle.textContent = `Active or starting in ${formatYear(year)}`;
@@ -3076,22 +3286,26 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
             }
 
             elements.warsContent.innerHTML = activeWars.map(war => `
-                <div class="timeline-item war-item">
+                <div class="timeline-item war-item ${escapeHtml(war.category || '')}">
                     ${createDotsMenu(war.originalIndex)}
-                    <div class="item-title">${war.name}</div>
+                    <div class="item-title">${escapeHtml(war.name)}</div>
                     <div class="item-subtitle">${formatYearRange(war.startYear, war.endYear)}</div>
-                    <div class="item-description">${war.description}</div>
+                    <div class="item-description">${safeDesc(war.description)}</div>
                 </div>
             `).join('');
         }
 
 
         function updatePersonalities(year) {
-            const alivePersonalities = rawData.map((item, index) => ({ ...item, originalIndex: index })).filter(item =>
+            const allCats = [...new Set(rawData.filter(i => i.type === 'personality').map(i => i.category))].filter(Boolean);
+            renderFilterChips('personalitiesFilterBar', 'personality', allCats);
+
+            let alivePersonalities = rawData.map((item, index) => ({ ...item, originalIndex: index })).filter(item =>
                 item.type === 'personality' &&
                 year >= Math.max(item.startYear, minYear) &&
                 year <= Math.min(item.endYear ?? maxYear, maxYear)
             );
+            if (columnFilters.personality.size > 0) alivePersonalities = alivePersonalities.filter(i => columnFilters.personality.has(i.category));
 
             elements.personalitiesCount.textContent = `${alivePersonalities.length} individual${alivePersonalities.length !== 1 ? 's' : ''}`;
             elements.personalitiesSubtitle.textContent = `Alive in ${formatYear(year)}`;
@@ -3102,11 +3316,11 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
             }
 
             elements.personalitiesContent.innerHTML = alivePersonalities.map(person => `
-                <div class="timeline-item person-item ${person.category}">
+                <div class="timeline-item person-item ${escapeHtml(person.category)}">
                     ${createDotsMenu(person.originalIndex)}
-                    <div class="item-title">${person.name}</div>
+                    <div class="item-title">${escapeHtml(person.name)}</div>
                     <div class="item-subtitle">${formatYearRange(person.startYear, person.endYear)}</div>
-                    <div class="item-description">${person.description}</div>
+                    <div class="item-description">${safeDesc(person.description)}</div>
                 </div>
             `).join('');
         }
@@ -3114,16 +3328,17 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
         // Add Data Modal functionality
         function initializeModal() {
             elements.openAddDataModal.onclick = () => {
-                // Reset form for adding new data
                 elements.addDataForm.reset();
                 elements.addDataModalTitle.textContent = 'Add Data';
                 elements.addDataSubmitButton.textContent = 'Add Data';
-                elements.addDataIndex.value = ''; // Clear index for new entry
-                elements.addDataEnd.removeAttribute('disabled'); // Ensure end date is enabled by default
-                elements.addDataEndEra.removeAttribute('disabled'); // Ensure end date era is enabled by default
-                elements.addDataSection.removeAttribute('disabled'); // Ensure section is enabled
-                elements.addDataStartEra.value = 'CE'; // Default to CE
-                elements.addDataEndEra.value = 'CE';   // Default to CE
+                elements.addDataIndex.value = '';
+                elements.addDataEnd.removeAttribute('disabled');
+                elements.addDataEndEra.removeAttribute('disabled');
+                elements.addDataSection.removeAttribute('disabled');
+                elements.addDataStartEra.value = 'CE';
+                elements.addDataEndEra.value = 'CE';
+                const catGroup = document.getElementById('categoryGroup');
+                if (catGroup) catGroup.style.display = 'none';
                 elements.addDataModal.style.display = 'block';
             };
             elements.closeAddDataModal.onclick = () => elements.addDataModal.style.display = 'none';
@@ -3133,8 +3348,8 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
             });
 
             elements.addDataSection.onchange = () => {
-                // If section is 'event', disable end date and its era. Otherwise, enable.
-                if (elements.addDataSection.value === 'event') {
+                const sec = elements.addDataSection.value;
+                if (sec === 'event') {
                     elements.addDataEnd.value = '';
                     elements.addDataEnd.setAttribute('disabled', 'disabled');
                     elements.addDataEndEra.setAttribute('disabled', 'disabled');
@@ -3142,6 +3357,8 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
                     elements.addDataEnd.removeAttribute('disabled');
                     elements.addDataEndEra.removeAttribute('disabled');
                 }
+                const catGroup = document.getElementById('categoryGroup');
+                if (catGroup) catGroup.style.display = sec === 'personality' ? 'block' : 'none';
             };
 
             elements.addDataForm.onsubmit = (e) => {
@@ -3192,27 +3409,25 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
                     newItem.endYear = endYear;
                 }
 
-                // Assign a default category if not specified (for custom entries)
+                // Assign category
                 if (section === 'era') {
                     newItem.category = 'custom-era';
                 } else if (section === 'personality') {
-                    newItem.category = 'custom-personality';
+                    newItem.category = document.getElementById('addDataCategory').value || 'custom-personality';
                 } else if (section === 'event') {
                     newItem.category = 'custom-event';
-                } else if (section === 'war') { // NEW: Default category for wars
+                } else if (section === 'war') {
                     newItem.category = 'custom-war';
                 }
 
 
                 if (index !== '') {
-                    // Editing existing item
                     rawData[index] = newItem;
                 } else {
-                    // Adding new item
                     rawData.push(newItem);
                 }
-
-                initializeData(); // Re-initialize data to regenerate events and update 'data' array
+                saveToLocalStorage();
+                initializeData();
                 calculateEventYears(); // Recalculate event years
                 createTimelineMarkers(); // Re-render timeline markers
                 updateDisplay(currentYear); // Refresh display
@@ -3375,26 +3590,18 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
         }
 
         function highlightMatch(text, query) {
-            if (!text || !query) return text; // Handle empty text or query
-            const lowerCaseText = text.toLowerCase();
-            const lowerCaseQuery = query.toLowerCase();
+            if (!text || !query) return escapeHtml(text);
+            const safe = escapeHtml(text);
+            const lowerSafe = safe.toLowerCase();
+            const lowerQuery = escapeHtml(query).toLowerCase();
             let lastIndex = 0;
-            let result = [];
-
-            // Find all occurrences of the query in the text
-            while (lastIndex < lowerCaseText.length) {
-                const startIndex = lowerCaseText.indexOf(lowerCaseQuery, lastIndex);
-                if (startIndex === -1) {
-                    // No more matches, add the rest of the text
-                    result.push(text.substring(lastIndex));
-                    break;
-                }
-                // Add the text before the match
-                result.push(text.substring(lastIndex, startIndex));
-                // Add the highlighted match
-                result.push(`<span class="highlight">${text.substring(startIndex, startIndex + query.length)}</span>`);
-                // Move the lastIndex past the current match
-                lastIndex = startIndex + query.length;
+            const result = [];
+            while (lastIndex < lowerSafe.length) {
+                const startIndex = lowerSafe.indexOf(lowerQuery, lastIndex);
+                if (startIndex === -1) { result.push(safe.substring(lastIndex)); break; }
+                result.push(safe.substring(lastIndex, startIndex));
+                result.push(`<span class="highlight">${safe.substring(startIndex, startIndex + lowerQuery.length)}</span>`);
+                lastIndex = startIndex + lowerQuery.length;
             }
             return result.join('');
         }
@@ -3527,9 +3734,9 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
                     }
                     return `
                         <div class="full-list-item">
-                            <div class="item-title">${item.name}</div>
+                            <div class="item-title">${escapeHtml(item.name)}</div>
                             <div class="item-subtitle">${yearInfo}</div>
-                            <div class="item-description">${item.description}</div>
+                            <div class="item-description">${safeDesc(item.description)}</div>
                         </div>
                     `;
                 }).join('');
@@ -3539,6 +3746,16 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
             elements.fullListModal.style.display = 'block';
         }
 
+
+        function initializeShortcutModal() {
+            const btn = document.getElementById('shortcutHintBtn');
+            const overlay = document.getElementById('shortcutOverlay');
+            const close = document.getElementById('closeShortcutModal');
+            if (!btn || !overlay || !close) return;
+            btn.addEventListener('click', () => overlay.classList.add('active'));
+            close.addEventListener('click', () => overlay.classList.remove('active'));
+            overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('active'); });
+        }
 
         // Initialize everything
         document.addEventListener('DOMContentLoaded', function() {
@@ -3552,8 +3769,11 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
             initializeKeyboardShortcuts();
             initializeSearch();
             initializeSaveHtml();
-            initializeFullListModal(); // Initialize new full list modal functionality
-            // Trigger initial display update
+            initializeFullListModal();
+            initializeShortcutModal();
+            // Read year from URL hash, fall back to default
+            const hashMatch = location.hash.match(/^#year=(-?\d+)$/);
+            if (hashMatch) currentYear = parseInt(hashMatch[1], 10);
             jumpToYear(currentYear);
         });
     
@@ -3719,5 +3939,19 @@ function isYearInRange(selectedYear, startYear, startEra, endYear, endEra) {
 }
 </script>
 
+
+<!-- Keyboard Shortcut Hint Modal -->
+<div class="shortcut-overlay" id="shortcutOverlay">
+    <div class="shortcut-box">
+        <button class="close-button" id="closeShortcutModal" style="position:absolute;top:12px;right:16px;font-size:26px;">×</button>
+        <h3>Keyboard Shortcuts</h3>
+        <div class="shortcut-row"><span>Move back 10 years</span><kbd>←</kbd></div>
+        <div class="shortcut-row"><span>Move forward 10 years</span><kbd>→</kbd></div>
+        <div class="shortcut-row"><span>Jump to previous event</span><kbd>Ctrl + ←</kbd></div>
+        <div class="shortcut-row"><span>Jump to next event</span><kbd>Ctrl + →</kbd></div>
+        <div class="shortcut-row"><span>Go to year (type &amp; press Enter)</span><kbd>Go input</kbd></div>
+        <div class="shortcut-row"><span>Search by keyword</span><kbd>Search input + Enter</kbd></div>
+    </div>
+</div>
 
 </body></html>
