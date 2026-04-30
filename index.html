@@ -1070,6 +1070,7 @@
                     </div>
                     <button id="saveHtmlButton" class="add-data-button admin-only">Save HTML</button>
                     <button id="openAddDataModal" class="add-data-button admin-only">Add Data</button>
+                    <button id="openBulkImportModal" class="add-data-button admin-only">📥 Import JSON</button>
                     <button id="adminLogoutBtn" class="add-data-button admin-only logout-btn">Logout</button>
                     <button class="shortcut-hint-btn" id="shortcutHintBtn" title="Keyboard shortcuts">?</button>
                 </div>
@@ -3884,6 +3885,76 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
             window.addEventListener('hashchange', checkAdminHash);
         }
 
+        function initializeBulkImport() {
+            const overlay  = document.getElementById('bulkImportOverlay');
+            const textarea = document.getElementById('bulkImportInput');
+            const feedback = document.getElementById('bulkImportFeedback');
+
+            document.getElementById('openBulkImportModal').addEventListener('click', () => {
+                textarea.value = '';
+                feedback.textContent = '';
+                overlay.classList.add('active');
+            });
+            document.getElementById('closeBulkImport').addEventListener('click', () => overlay.classList.remove('active'));
+            overlay.addEventListener('click', e => { if (e.target === overlay) overlay.classList.remove('active'); });
+
+            // Insert a multi-type template
+            document.getElementById('bulkImportTemplateBtn').addEventListener('click', () => {
+                textarea.value = JSON.stringify([
+                    { "type": "era",         "category": "non-muslim-rulers",  "name": "Example Era",    "startYear": 500,  "endYear": 700,  "description": "Description here." },
+                    { "type": "event",       "category": "political",          "name": "Example Event",  "startYear": 610,                   "description": "Description here." },
+                    { "type": "personality", "category": "scholars",           "name": "Example Person", "startYear": 800,  "endYear": 870,  "description": "Description here." },
+                    { "type": "war",         "category": "custom-war",         "name": "Example Battle", "startYear": 624,  "endYear": 624,  "description": "Description here." }
+                ], null, 2);
+            });
+
+            document.getElementById('bulkImportBtn').addEventListener('click', () => {
+                feedback.style.color = 'rgba(255,255,255,0.7)';
+                feedback.textContent = 'Validating...';
+                let parsed;
+                try {
+                    parsed = JSON.parse(textarea.value.trim());
+                } catch(e) {
+                    feedback.style.color = '#ff6b6b';
+                    feedback.textContent = '❌ Invalid JSON — ' + e.message;
+                    return;
+                }
+
+                if (!Array.isArray(parsed)) {
+                    feedback.style.color = '#ff6b6b';
+                    feedback.textContent = '❌ Must be a JSON array [ ... ]';
+                    return;
+                }
+
+                const validTypes = ['era','event','personality','war'];
+                const errors = [];
+                parsed.forEach((item, i) => {
+                    if (!validTypes.includes(item.type))  errors.push(`Item ${i+1}: invalid type "${item.type}"`);
+                    if (!item.name)                       errors.push(`Item ${i+1}: missing "name"`);
+                    if (item.startYear == null)           errors.push(`Item ${i+1}: missing "startYear"`);
+                    if (!item.description)                errors.push(`Item ${i+1}: missing "description"`);
+                });
+                if (errors.length) {
+                    feedback.style.color = '#ff6b6b';
+                    feedback.textContent = '❌ ' + errors.join(' | ');
+                    return;
+                }
+
+                // Append and save
+                rawData.push(...parsed);
+                saveToFirestore();
+                rebuildData();
+                calculateEventYears();
+                createTimelineMarkers();
+                updateDisplay(currentYear);
+
+                feedback.style.color = '#92D050';
+                feedback.textContent = `✅ ${parsed.length} item${parsed.length !== 1 ? 's' : ''} imported successfully!`;
+                textarea.value = '';
+                setTimeout(() => overlay.classList.remove('active'), 1500);
+            });
+        }
+
         function initializeShortcutModal() {
             const btn = document.getElementById('shortcutHintBtn');
             const overlay = document.getElementById('shortcutOverlay');
@@ -3907,6 +3978,7 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
             initializeSearch();
             initializeSaveHtml();
             initializeFullListModal();
+            initializeBulkImport();
             initializeShortcutModal();
             initializeAuth();            // sets up login/logout + restores session
             const hashMatch = location.hash.match(/^#year=(-?\d+)$/);
@@ -4092,6 +4164,30 @@ function isYearInRange(selectedYear, startYear, startEra, endYear, endEra) {
         </div>
         <div id="adminLoginError"></div>
         <button id="adminLoginBtn" class="submit-button" style="margin-top:18px;">Login</button>
+    </div>
+</div>
+
+<!-- Bulk Import Modal -->
+<div class="shortcut-overlay" id="bulkImportOverlay">
+    <div class="shortcut-box" style="min-width:520px;max-width:680px;width:90vw;">
+        <button class="close-button" id="closeBulkImport" style="position:absolute;top:12px;right:16px;font-size:26px;">×</button>
+        <h3>📥 Bulk Import JSON</h3>
+        <p style="font-size:13px;color:rgba(255,255,255,0.7);margin:10px 0 14px;">Paste a JSON array of items. New entries are <strong>appended</strong> — existing data is never overwritten.</p>
+        <textarea id="bulkImportInput" style="width:100%;height:220px;background:rgba(255,255,255,0.08);border:1px solid #FFD700;border-radius:6px;color:white;padding:12px;font-size:12px;font-family:monospace;resize:vertical;" placeholder='[
+  {
+    "type": "personality",
+    "category": "scholars",
+    "name": "Ibn Khaldun",
+    "startYear": 1332,
+    "endYear": 1406,
+    "description": "Founder of historiography..."
+  }
+]'></textarea>
+        <div id="bulkImportFeedback" style="margin-top:10px;font-size:13px;min-height:20px;"></div>
+        <div style="display:flex;gap:10px;margin-top:14px;">
+            <button id="bulkImportBtn" class="submit-button" style="flex:1;">Import</button>
+            <button id="bulkImportTemplateBtn" class="submit-button" style="flex:1;background:rgba(255,255,255,0.15);color:white;">Insert Template</button>
+        </div>
     </div>
 </div>
 
