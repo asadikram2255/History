@@ -1071,6 +1071,7 @@
                     <button id="saveHtmlButton" class="add-data-button admin-only">Save HTML</button>
                     <button id="openAddDataModal" class="add-data-button admin-only">Add Data</button>
                     <button id="openBulkImportModal" class="add-data-button admin-only">📥 Import JSON</button>
+                    <button id="resetDataBtn" class="add-data-button admin-only" style="background:#c0392b;">🗑️ Reset Data</button>
                     <button id="adminLogoutBtn" class="add-data-button admin-only logout-btn">Logout</button>
                     <button class="shortcut-hint-btn" id="shortcutHintBtn" title="Keyboard shortcuts">?</button>
                 </div>
@@ -8108,6 +8109,19 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
                 .catch(e => console.error('Firestore save failed:', e));
         }
 
+        async function resetToBuiltInData() {
+            if (!isAdmin) return;
+            if (!confirm('⚠️ This will DELETE all imported data and reset the timeline to built-in defaults.\n\nAre you sure?')) return;
+            try {
+                await db.collection('timeline').doc('data').delete();
+                alert('✅ Data reset successfully. The page will now reload.');
+                location.reload();
+            } catch(e) {
+                alert('❌ Reset failed: ' + e.message);
+                console.error(e);
+            }
+        }
+
         async function initializeData() {
             try {
                 const snap = await db.collection('timeline').doc('data').get();
@@ -9042,6 +9056,9 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
 
             // Logout button
             document.getElementById('adminLogoutBtn').addEventListener('click', () => auth.signOut());
+
+            // Reset data button
+            document.getElementById('resetDataBtn').addEventListener('click', resetToBuiltInData);
 
             // Close login overlay
             document.getElementById('closeAdminLogin').addEventListener('click', hideAdminLogin);
