@@ -1271,7 +1271,8 @@
     "category": "islamic-battle",
     "name": "Battle of Uhud",
     "startYear": 625,
-    "description": "Second major battle between Muslims and Quraysh. The Muslims initially advanced but a breach of orders by archers turned the tide. The Prophet was wounded. Hamzah ibn Abd al-Muttalib was martyred. A painful but instructive defeat."
+    "description": "Second major battle between Muslims and Quraysh. The Muslims initially advanced but a breach of orders by archers turned the tide. The Prophet was wounded. Hamzah ibn Abd al-Muttalib was martyred. A painful but instructive defeat.",
+    "endYear": 625
   },
   {
     "type": "personality",
@@ -1286,21 +1287,24 @@
     "category": "islamic-battle",
     "name": "Battle of Khandaq (The Trench)",
     "startYear": 627,
-    "description": "Quraysh and allied tribes besieged Medina with 10,000 troops. Salman al-Farisi suggested digging a trench — unprecedented in Arabia. The confederates failed to cross and withdrew. A decisive defensive victory for the Muslims."
+    "description": "Quraysh and allied tribes besieged Medina with 10,000 troops. Salman al-Farisi suggested digging a trench — unprecedented in Arabia. The confederates failed to cross and withdrew. A decisive defensive victory for the Muslims.",
+    "endYear": 627
   },
   {
     "type": "war",
     "category": "islamic-battle",
     "name": "Battle of Khaybar",
     "startYear": 628,
-    "description": "Muslim forces under the Prophet conquered the Jewish stronghold of Khaybar in the Hejaz. Ali ibn Abi Talib performed heroically, reportedly tearing off a fortress gate as a shield. The Jews were allowed to remain as tenant farmers."
+    "description": "Muslim forces under the Prophet conquered the Jewish stronghold of Khaybar in the Hejaz. Ali ibn Abi Talib performed heroically, reportedly tearing off a fortress gate as a shield. The Jews were allowed to remain as tenant farmers.",
+    "endYear": 628
   },
   {
     "type": "war",
     "category": "islamic-battle",
     "name": "Battle of Mutah",
     "startYear": 629,
-    "description": "First Muslim engagement with the Byzantine Empire. A force of 3,000 Muslims faced a much larger Byzantine-Arab army in Jordan. Three commanders — Zayd ibn Harithah, Jafar ibn Abi Talib, Abdullah ibn Rawahah — were martyred before Khalid ibn al-Walid led the withdrawal."
+    "description": "First Muslim engagement with the Byzantine Empire. A force of 3,000 Muslims faced a much larger Byzantine-Arab army in Jordan. Three commanders — Zayd ibn Harithah, Jafar ibn Abi Talib, Abdullah ibn Rawahah — were martyred before Khalid ibn al-Walid led the withdrawal.",
+    "endYear": 629
   },
   {
     "type": "personality",
@@ -1315,7 +1319,8 @@
     "category": "islamic-battle",
     "name": "Battle of Hunayn",
     "startYear": 630,
-    "description": "Battle shortly after the Conquest of Mecca against the Hawazin and Thaqif tribes. Initial Muslim rout turned into victory. Quran 9:25-26 mentions how Allah's aid turned the tide. Large quantities of booty and captives were taken."
+    "description": "Battle shortly after the Conquest of Mecca against the Hawazin and Thaqif tribes. Initial Muslim rout turned into victory. Quran 9:25-26 mentions how Allah's aid turned the tide. Large quantities of booty and captives were taken.",
+    "endYear": 630
   },
   {
     "type": "personality",
@@ -1330,7 +1335,8 @@
     "category": "islamic-battle",
     "name": "Battle of Yamama (Ridda Wars)",
     "startYear": 632,
-    "description": "Major battle of the Ridda Wars against Musaylimah the false prophet. Khalid ibn al-Walid commanded. Many hafiz (Quran memorizers) were martyred here — a key reason Abu Bakr ordered the first Quran compilation."
+    "description": "Major battle of the Ridda Wars against Musaylimah the false prophet. Khalid ibn al-Walid commanded. Many hafiz (Quran memorizers) were martyred here — a key reason Abu Bakr ordered the first Quran compilation.",
+    "endYear": 632
   },
   {
     "type": "event",
@@ -1345,14 +1351,16 @@
     "category": "islamic-battle",
     "name": "Battle of Ullays",
     "startYear": 633,
-    "description": "One of Khalid ibn al-Walid's early victories in the conquest of Iraq against the Sasanian-backed forces. Fought near the Euphrates. Khalid reportedly vowed to make the river run red, and the battle was exceptionally fierce."
+    "description": "One of Khalid ibn al-Walid's early victories in the conquest of Iraq against the Sasanian-backed forces. Fought near the Euphrates. Khalid reportedly vowed to make the river run red, and the battle was exceptionally fierce.",
+    "endYear": 633
   },
   {
     "type": "war",
     "category": "islamic-battle",
     "name": "Battle of Walaja",
     "startYear": 633,
-    "description": "Khalid ibn al-Walid used a double-envelopment (pincer) maneuver against Sasanian forces in Iraq — a tactically sophisticated victory that opened the road to the Euphrates valley."
+    "description": "Khalid ibn al-Walid used a double-envelopment (pincer) maneuver against Sasanian forces in Iraq — a tactically sophisticated victory that opened the road to the Euphrates valley.",
+    "endYear": 633
   },
   {
     "type": "personality",
@@ -1367,28 +1375,32 @@
     "category": "islamic-battle",
     "name": "Battle of Ajnadayn",
     "startYear": 634,
-    "description": "First major engagement between Muslim forces and the Byzantine army in Palestine. Abu Ubaydah ibn al-Jarrah and Khalid commanded. A decisive Muslim victory that opened Palestine to the Islamic conquests."
+    "description": "First major engagement between Muslim forces and the Byzantine army in Palestine. Abu Ubaydah ibn al-Jarrah and Khalid commanded. A decisive Muslim victory that opened Palestine to the Islamic conquests.",
+    "endYear": 634
   },
   {
     "type": "war",
     "category": "islamic-battle",
     "name": "Battle of The Bridge (al-Jisr)",
     "startYear": 634,
-    "description": "A rare early Muslim defeat in Iraq. Muslim forces under Abu Ubayd al-Thaqafi were ambushed by Sasanian war elephants at a river crossing. Abu Ubayd was killed. The defeat temporarily halted the advance into Iraq."
+    "description": "A rare early Muslim defeat in Iraq. Muslim forces under Abu Ubayd al-Thaqafi were ambushed by Sasanian war elephants at a river crossing. Abu Ubayd was killed. The defeat temporarily halted the advance into Iraq.",
+    "endYear": 634
   },
   {
     "type": "war",
     "category": "islamic-battle",
     "name": "Battle of Buwaib",
     "startYear": 635,
-    "description": "Major Muslim victory over Sasanian forces in Iraq under al-Muthanna ibn Haritha. Helped recover Muslim morale after the defeat at the Bridge and resumed the advance into the Sasanian heartland."
+    "description": "Major Muslim victory over Sasanian forces in Iraq under al-Muthanna ibn Haritha. Helped recover Muslim morale after the defeat at the Bridge and resumed the advance into the Sasanian heartland.",
+    "endYear": 635
   },
   {
     "type": "war",
     "category": "islamic-battle",
     "name": "Battle of Yarmuk",
     "startYear": 636,
-    "description": "One of the most decisive battles in world history. Muslim forces under Khalid ibn al-Walid defeated the Byzantine army in modern Jordan/Syria. Opened Syria and Palestine permanently to Islamic rule. Byzantines never recovered these territories."
+    "description": "One of the most decisive battles in world history. Muslim forces under Khalid ibn al-Walid defeated the Byzantine army in modern Jordan/Syria. Opened Syria and Palestine permanently to Islamic rule. Byzantines never recovered these territories.",
+    "endYear": 636
   },
   {
     "type": "event",
@@ -1403,14 +1415,16 @@
     "category": "islamic-battle",
     "name": "Siege and Surrender of Jerusalem",
     "startYear": 637,
-    "description": "Jerusalem surrendered peacefully to Caliph Umar ibn al-Khattab. The Patriarch Sophronius insisted that only the Caliph himself receive the keys. Umar visited the Church of the Holy Sepulchre but refused to pray inside to protect it from being converted."
+    "description": "Jerusalem surrendered peacefully to Caliph Umar ibn al-Khattab. The Patriarch Sophronius insisted that only the Caliph himself receive the keys. Umar visited the Church of the Holy Sepulchre but refused to pray inside to protect it from being converted.",
+    "endYear": 637
   },
   {
     "type": "war",
     "category": "islamic-battle",
     "name": "Battle of al-Jalula",
     "startYear": 637,
-    "description": "Muslim victory over Sasanian forces in Iraq, following al-Qadisiyyah. The Sasanian army was routed and retreated to their heartland in Persia. The road to Ctesiphon (al-Mada'in) was opened."
+    "description": "Muslim victory over Sasanian forces in Iraq, following al-Qadisiyyah. The Sasanian army was routed and retreated to their heartland in Persia. The road to Ctesiphon (al-Mada'in) was opened.",
+    "endYear": 637
   },
   {
     "type": "event",
@@ -1441,21 +1455,24 @@
     "category": "islamic-battle",
     "name": "Battle of the Camel",
     "startYear": 656,
-    "description": "First civil war battle between Muslims. Caliph Ali ibn Abi Talib's forces defeated the coalition of Talha, Zubayr, and Aisha near Basra. Talha and Zubayr were killed. Aisha was escorted home by Ali. Named for Aisha's camel amid which fighting occurred."
+    "description": "First civil war battle between Muslims. Caliph Ali ibn Abi Talib's forces defeated the coalition of Talha, Zubayr, and Aisha near Basra. Talha and Zubayr were killed. Aisha was escorted home by Ali. Named for Aisha's camel amid which fighting occurred.",
+    "endYear": 656
   },
   {
     "type": "war",
     "category": "islamic-battle",
     "name": "Battle of Siffin",
     "startYear": 657,
-    "description": "Inconclusive battle between Caliph Ali's forces and Muawiyah's Syrian army. When Ali's forces were winning, Muawiyah's troops raised Qurans on spears calling for arbitration — a famous moment of political manipulation. Led to arbitration and eventually the Kharijite schism."
+    "description": "Inconclusive battle between Caliph Ali's forces and Muawiyah's Syrian army. When Ali's forces were winning, Muawiyah's troops raised Qurans on spears calling for arbitration — a famous moment of political manipulation. Led to arbitration and eventually the Kharijite schism.",
+    "endYear": 657
   },
   {
     "type": "war",
     "category": "islamic-battle",
     "name": "Battle of Nahrawan",
     "startYear": 658,
-    "description": "Ali ibn Abi Talib defeated the Kharijites — extremists who had seceded after accepting arbitration at Siffin. Though militarily victorious, the battle planted seeds of anti-Ali sentiment that led to his assassination."
+    "description": "Ali ibn Abi Talib defeated the Kharijites — extremists who had seceded after accepting arbitration at Siffin. Though militarily victorious, the battle planted seeds of anti-Ali sentiment that led to his assassination.",
+    "endYear": 658
   },
   {
     "type": "personality",
@@ -1502,7 +1519,8 @@
     "category": "islamic-battle",
     "name": "Battle of Karbala",
     "startYear": 680,
-    "description": "The most pivotal and tragic event in Islamic history after the Prophet's death. Husayn ibn Ali, grandson of the Prophet, and 72 companions were killed by Yazid's Umayyad forces at Karbala, Iraq. Deeply split Islam into Sunni and Shia. Commemorated annually on Ashura."
+    "description": "The most pivotal and tragic event in Islamic history after the Prophet's death. Husayn ibn Ali, grandson of the Prophet, and 72 companions were killed by Yazid's Umayyad forces at Karbala, Iraq. Deeply split Islam into Sunni and Shia. Commemorated annually on Ashura.",
+    "endYear": 680
   },
   {
     "type": "personality",
@@ -1517,7 +1535,8 @@
     "category": "islamic-battle",
     "name": "Battle of al-Harrah",
     "startYear": 683,
-    "description": "Umayyad forces under Muslim ibn Uqbah attacked Medina after it rebelled against Yazid I. The city was sacked and the citizens subjected to three days of pillage. One of the most condemned events in early Islamic history."
+    "description": "Umayyad forces under Muslim ibn Uqbah attacked Medina after it rebelled against Yazid I. The city was sacked and the citizens subjected to three days of pillage. One of the most condemned events in early Islamic history.",
+    "endYear": 683
   },
   {
     "type": "personality",
@@ -1532,7 +1551,8 @@
     "category": "islamic-battle",
     "name": "Battle of Marj Rahit",
     "startYear": 684,
-    "description": "Marwan I defeated the Qaysi Arabs supporting Ibn al-Zubayr's rival caliphate. Established Marwanid Umayyad control over Syria. Deepened the tribal split between Qays (northern) and Yaman (southern) Arabs that would plague the Umayyads."
+    "description": "Marwan I defeated the Qaysi Arabs supporting Ibn al-Zubayr's rival caliphate. Established Marwanid Umayyad control over Syria. Deepened the tribal split between Qays (northern) and Yaman (southern) Arabs that would plague the Umayyads.",
+    "endYear": 684
   },
   {
     "type": "personality",
@@ -1563,14 +1583,16 @@
     "category": "islamic-battle",
     "name": "Battle of Debal — Conquest of Sindh",
     "startYear": 711,
-    "description": "Muhammad ibn Qasim's forces landed at Debal (near modern Karachi) and began the Muslim conquest of the Sindh region. Led to the first permanent Islamic state in the Indian subcontinent."
+    "description": "Muhammad ibn Qasim's forces landed at Debal (near modern Karachi) and began the Muslim conquest of the Sindh region. Led to the first permanent Islamic state in the Indian subcontinent.",
+    "endYear": 712
   },
   {
     "type": "war",
     "category": "islamic-battle",
     "name": "Battle of Guadalete — Conquest of Spain",
     "startYear": 711,
-    "description": "Tariq ibn Ziyad crossed from Morocco with 7,000 troops and defeated the Visigothic King Roderic at the Battle of Guadalete. Opened the Iberian Peninsula to the Muslim conquests. Within years, nearly all of Spain was under Muslim control."
+    "description": "Tariq ibn Ziyad crossed from Morocco with 7,000 troops and defeated the Visigothic King Roderic at the Battle of Guadalete. Opened the Iberian Peninsula to the Muslim conquests. Within years, nearly all of Spain was under Muslim control.",
+    "endYear": 711
   },
   {
     "type": "personality",
@@ -1609,7 +1631,8 @@
     "category": "islamic-battle",
     "name": "Battle of Tours (Battle of Poitiers)",
     "startYear": 732,
-    "description": "Charles Martel's Frankish forces halted the northernmost Muslim advance into Europe near Poitiers, France. The Muslim commander Abd al-Rahman al-Ghafiqi was killed. Considered by European historians as a turning point that preserved Christian Europe."
+    "description": "Charles Martel's Frankish forces halted the northernmost Muslim advance into Europe near Poitiers, France. The Muslim commander Abd al-Rahman al-Ghafiqi was killed. Considered by European historians as a turning point that preserved Christian Europe.",
+    "endYear": 732
   },
   {
     "type": "personality",
@@ -1664,14 +1687,16 @@
     "category": "islamic-battle",
     "name": "Battle of the Zab",
     "startYear": 750,
-    "description": "Abbasid forces under Abdullah ibn Ali defeated the last Umayyad Caliph Marwan II on the Greater Zab river in Iraq. Marwan II fled and was killed in Egypt. Ended the Umayyad Caliphate and established the Abbasid dynasty."
+    "description": "Abbasid forces under Abdullah ibn Ali defeated the last Umayyad Caliph Marwan II on the Greater Zab river in Iraq. Marwan II fled and was killed in Egypt. Ended the Umayyad Caliphate and established the Abbasid dynasty.",
+    "endYear": 750
   },
   {
     "type": "war",
     "category": "islamic-battle",
     "name": "Battle of Talas",
     "startYear": 751,
-    "description": "Arab Abbasid forces defeated the Tang Chinese army in Central Asia near the Talas River (modern Kyrgyzstan). Determined that Central Asia would remain Muslim, not Chinese. Chinese papermakers captured in the battle brought the technology of papermaking to the Islamic world."
+    "description": "Arab Abbasid forces defeated the Tang Chinese army in Central Asia near the Talas River (modern Kyrgyzstan). Determined that Central Asia would remain Muslim, not Chinese. Chinese papermakers captured in the battle brought the technology of papermaking to the Islamic world.",
+    "endYear": 751
   },
   {
     "type": "personality",
@@ -2651,7 +2676,8 @@
     "category": "islamic-battle",
     "name": "Battle of Montgisard",
     "startYear": 1177,
-    "description": "Young Saladin's Egyptian army was surprised and routed by a much smaller Crusader force under King Baldwin IV (the Leper King) of Jerusalem. One of Saladin's rare defeats, demonstrating the Crusaders' fighting capability."
+    "description": "Young Saladin's Egyptian army was surprised and routed by a much smaller Crusader force under King Baldwin IV (the Leper King) of Jerusalem. One of Saladin's rare defeats, demonstrating the Crusaders' fighting capability.",
+    "endYear": 1177
   },
   {
     "type": "personality",
@@ -2674,7 +2700,8 @@
     "category": "islamic-battle",
     "name": "Battle of Hattin",
     "startYear": 1187,
-    "description": "Saladin's greatest victory. He destroyed the main Crusader army near the Sea of Galilee by denying them water, then attacked. Virtually the entire Crusader military force was annihilated. Jerusalem surrendered three months later. Triggered the Third Crusade."
+    "description": "Saladin's greatest victory. He destroyed the main Crusader army near the Sea of Galilee by denying them water, then attacked. Virtually the entire Crusader military force was annihilated. Jerusalem surrendered three months later. Triggered the Third Crusade.",
+    "endYear": 1187
   },
   {
     "type": "war",
@@ -2689,7 +2716,8 @@
     "category": "islamic-battle",
     "name": "Battle of Arsuf",
     "startYear": 1191,
-    "description": "Richard I of England defeated Saladin's forces near Arsuf on the Palestinian coast. Richard's disciplined army withstood a relentless assault before a devastating charge. Saladin's forces retreated with heavy losses."
+    "description": "Richard I of England defeated Saladin's forces near Arsuf on the Palestinian coast. Richard's disciplined army withstood a relentless assault before a devastating charge. Saladin's forces retreated with heavy losses.",
+    "endYear": 1191
   },
   {
     "type": "personality",
@@ -2998,7 +3026,8 @@
     "category": "islamic-battle",
     "name": "Battle of Ain Jalut",
     "startYear": 1260,
-    "description": "Mamluk Sultan Qutuz and his general Baibars defeated the Mongol army under Kitbuqa in Palestine — the first major defeat of the Mongols in battle and one of the most significant in world history. Stopped Mongol expansion into North Africa and the rest of the Muslim world."
+    "description": "Mamluk Sultan Qutuz and his general Baibars defeated the Mongol army under Kitbuqa in Palestine — the first major defeat of the Mongols in battle and one of the most significant in world history. Stopped Mongol expansion into North Africa and the rest of the Muslim world.",
+    "endYear": 1260
   },
   {
     "type": "personality",
@@ -3117,7 +3146,8 @@
     "category": "islamic-battle",
     "name": "Siege of Acre — End of Crusades",
     "startYear": 1291,
-    "description": "Mamluk Sultan Khalil ibn Qalawun besieged and captured Acre, the last major Crusader stronghold in the Holy Land. The fall of Acre ended nearly 200 years of Crusader presence in the Levant."
+    "description": "Mamluk Sultan Khalil ibn Qalawun besieged and captured Acre, the last major Crusader stronghold in the Holy Land. The fall of Acre ended nearly 200 years of Crusader presence in the Levant.",
+    "endYear": 1291
   },
   {
     "type": "personality",
@@ -3588,7 +3618,8 @@
     "category": "islamic-battle",
     "name": "Battle of Ankara",
     "startYear": 1402,
-    "description": "Timur (Tamerlane) defeated and captured the Ottoman Sultan Bayezid I near Ankara. Bayezid died in captivity. The Ottoman Empire nearly collapsed, entering the Interregnum (1402-1413). Timur's victory inadvertently prolonged the Byzantine Empire."
+    "description": "Timur (Tamerlane) defeated and captured the Ottoman Sultan Bayezid I near Ankara. Bayezid died in captivity. The Ottoman Empire nearly collapsed, entering the Interregnum (1402-1413). Timur's victory inadvertently prolonged the Byzantine Empire.",
+    "endYear": 1402
   },
   {
     "type": "personality",
@@ -3770,7 +3801,8 @@
     "category": "islamic-battle",
     "name": "Battle of Varna",
     "startYear": 1444,
-    "description": "Ottoman Sultan Murad II defeated a Christian Crusade led by King Ladislas of Hungary and Poland near Varna, Bulgaria. The Hungarian commander Janos Hunyadi barely escaped. Secured Ottoman dominance in the Balkans."
+    "description": "Ottoman Sultan Murad II defeated a Christian Crusade led by King Ladislas of Hungary and Poland near Varna, Bulgaria. The Hungarian commander Janos Hunyadi barely escaped. Secured Ottoman dominance in the Balkans.",
+    "endYear": 1444
   },
   {
     "type": "personality",
@@ -3809,7 +3841,8 @@
     "category": "islamic-battle",
     "name": "Second Battle of Kosovo",
     "startYear": 1448,
-    "description": "Ottoman forces under Murad II defeated the Hungarian-Wallachian coalition under Janos Hunyadi. Ended European hopes of rolling back Ottoman power in the Balkans before the fall of Constantinople."
+    "description": "Ottoman forces under Murad II defeated the Hungarian-Wallachian coalition under Janos Hunyadi. Ended European hopes of rolling back Ottoman power in the Balkans before the fall of Constantinople.",
+    "endYear": 1448
   },
   {
     "type": "personality",
@@ -3872,7 +3905,8 @@
     "category": "islamic-battle",
     "name": "Fall of Constantinople",
     "startYear": 1453,
-    "description": "Ottoman Sultan Mehmed II (the Conqueror) captured Constantinople after a 53-day siege on May 29, 1453. The Byzantine Emperor Constantine XI died in the final battle. End of the Byzantine Empire (Eastern Roman Empire) after 1,100 years. Istanbul became the new Ottoman capital."
+    "description": "Ottoman Sultan Mehmed II (the Conqueror) captured Constantinople after a 53-day siege on May 29, 1453. The Byzantine Emperor Constantine XI died in the final battle. End of the Byzantine Empire (Eastern Roman Empire) after 1,100 years. Istanbul became the new Ottoman capital.",
+    "endYear": 1453
   },
   {
     "type": "personality",
@@ -4117,7 +4151,8 @@
     "category": "islamic-battle",
     "name": "Battle of Chaldiran",
     "startYear": 1514,
-    "description": "Ottoman Sultan Selim I defeated Safavid Shah Ismail I in northwestern Iran. The Ottomans' use of artillery and firearms proved decisive against the Safavid cavalry. Established the Ottoman-Safavid frontier roughly where it remains today."
+    "description": "Ottoman Sultan Selim I defeated Safavid Shah Ismail I in northwestern Iran. The Ottomans' use of artillery and firearms proved decisive against the Safavid cavalry. Established the Ottoman-Safavid frontier roughly where it remains today.",
+    "endYear": 1514
   },
   {
     "type": "personality",
@@ -4132,7 +4167,8 @@
     "category": "islamic-battle",
     "name": "Battle of Marj Dabiq",
     "startYear": 1516,
-    "description": "Ottoman Sultan Selim I defeated the Mamluk Sultan Qansuh al-Ghawri near Aleppo in Syria. The Mamluk sultan was killed in the battle. Syria passed to Ottoman control, ending Mamluk power in the Levant."
+    "description": "Ottoman Sultan Selim I defeated the Mamluk Sultan Qansuh al-Ghawri near Aleppo in Syria. The Mamluk sultan was killed in the battle. Syria passed to Ottoman control, ending Mamluk power in the Levant.",
+    "endYear": 1516
   },
   {
     "type": "personality",
@@ -4147,7 +4183,8 @@
     "category": "islamic-battle",
     "name": "Battle of al-Raydaniyya",
     "startYear": 1517,
-    "description": "Ottomans defeated the last Mamluk Sultan Tuman Bay II outside Cairo. Egypt was conquered and incorporated into the Ottoman Empire. Selim I assumed the role of Custodian of the Two Holy Mosques."
+    "description": "Ottomans defeated the last Mamluk Sultan Tuman Bay II outside Cairo. Egypt was conquered and incorporated into the Ottoman Empire. Selim I assumed the role of Custodian of the Two Holy Mosques.",
+    "endYear": 1517
   },
   {
     "type": "event",
@@ -4185,21 +4222,24 @@
     "category": "islamic-battle",
     "name": "First Battle of Panipat",
     "startYear": 1526,
-    "description": "Babur defeated Ibrahim Lodi, the last Delhi Sultan, using artillery and flanking tactics. Established the Mughal Empire in northern India. Ibrahim Lodi was killed on the battlefield."
+    "description": "Babur defeated Ibrahim Lodi, the last Delhi Sultan, using artillery and flanking tactics. Established the Mughal Empire in northern India. Ibrahim Lodi was killed on the battlefield.",
+    "endYear": 1526
   },
   {
     "type": "war",
     "category": "islamic-battle",
     "name": "Battle of Mohacs",
     "startYear": 1526,
-    "description": "Suleiman the Magnificent destroyed the Hungarian army of King Louis II in just two hours. Louis II drowned fleeing the battlefield. Hungary fell under Ottoman suzerainty, reshaping Central European politics for 150 years."
+    "description": "Suleiman the Magnificent destroyed the Hungarian army of King Louis II in just two hours. Louis II drowned fleeing the battlefield. Hungary fell under Ottoman suzerainty, reshaping Central European politics for 150 years.",
+    "endYear": 1526
   },
   {
     "type": "war",
     "category": "islamic-battle",
     "name": "First Siege of Vienna",
     "startYear": 1529,
-    "description": "Suleiman the Magnificent's Ottoman army besieged Vienna but failed to take it due to extended supply lines and early onset of winter. The siege marked the high-water mark of Ottoman expansion into Central Europe."
+    "description": "Suleiman the Magnificent's Ottoman army besieged Vienna but failed to take it due to extended supply lines and early onset of winter. The siege marked the high-water mark of Ottoman expansion into Central Europe.",
+    "endYear": 1529
   },
   {
     "type": "personality",
@@ -4245,7 +4285,8 @@
     "category": "islamic-battle",
     "name": "Battle of Lepanto",
     "startYear": 1571,
-    "description": "The Holy League (Spain, Venice, Papal States) under Don John of Austria defeated the Ottoman fleet near Lepanto in Greece. The Ottoman navy lost over 200 ships. First major Ottoman naval defeat, though the Ottomans rebuilt quickly."
+    "description": "The Holy League (Spain, Venice, Papal States) under Don John of Austria defeated the Ottoman fleet near Lepanto in Greece. The Ottoman navy lost over 200 ships. First major Ottoman naval defeat, though the Ottomans rebuilt quickly.",
+    "endYear": 1571
   },
   {
     "type": "personality",
@@ -4276,7 +4317,8 @@
     "category": "islamic-battle",
     "name": "Battle of Alcazar (Battle of the Three Kings)",
     "startYear": 1578,
-    "description": "Ottoman-backed Sultan Abd al-Malik of Morocco defeated and killed King Sebastian of Portugal and the rival Moroccan claimant Abu Abdallah II. Three kings died in the battle. Portugal's defeat led to its absorption by Spain (1580)."
+    "description": "Ottoman-backed Sultan Abd al-Malik of Morocco defeated and killed King Sebastian of Portugal and the rival Moroccan claimant Abu Abdallah II. Three kings died in the battle. Portugal's defeat led to its absorption by Spain (1580).",
+    "endYear": 1578
   },
   {
     "type": "personality",
@@ -4387,7 +4429,8 @@
     "category": "islamic-battle",
     "name": "Second Siege of Vienna",
     "startYear": 1683,
-    "description": "Grand Vizier Kara Mustafa Pasha's massive Ottoman army besieged Vienna. A relief force under Polish King Jan III Sobieski and the Holy League broke the siege in the decisive Battle of Kahlenberg. Began the Ottoman retreat from Central Europe."
+    "description": "Grand Vizier Kara Mustafa Pasha's massive Ottoman army besieged Vienna. A relief force under Polish King Jan III Sobieski and the Holy League broke the siege in the decisive Battle of Kahlenberg. Began the Ottoman retreat from Central Europe.",
+    "endYear": 1683
   },
   {
     "type": "personality",
@@ -4426,7 +4469,8 @@
     "category": "islamic-battle",
     "name": "Battle of Zenta",
     "startYear": 1697,
-    "description": "Prince Eugene of Savoy annihilated the Ottoman army while it was crossing the Tisa River, killing Grand Vizier Elmas Mehmed Pasha. The crushing defeat led to the Treaty of Karlowitz (1699) — the first major Ottoman territorial concessions."
+    "description": "Prince Eugene of Savoy annihilated the Ottoman army while it was crossing the Tisa River, killing Grand Vizier Elmas Mehmed Pasha. The crushing defeat led to the Treaty of Karlowitz (1699) — the first major Ottoman territorial concessions.",
+    "endYear": 1697
   },
   {
     "type": "personality",
@@ -4577,7 +4621,8 @@
     "category": "islamic-battle",
     "name": "Battle of Panipat (Third)",
     "startYear": 1761,
-    "description": "Ahmad Shah Durrani of Afghanistan defeated the Maratha Confederacy, checking their expansion into northern India. One of the largest battles in the 18th century. Weakened the Marathas significantly, creating a power vacuum that the British later filled."
+    "description": "Ahmad Shah Durrani of Afghanistan defeated the Maratha Confederacy, checking their expansion into northern India. One of the largest battles in the 18th century. Weakened the Marathas significantly, creating a power vacuum that the British later filled.",
+    "endYear": 1761
   },
   {
     "type": "personality",
@@ -4774,7 +4819,8 @@
     "category": "islamic-battle",
     "name": "Battle of Omdurman",
     "startYear": 1898,
-    "description": "British General Kitchener's forces equipped with Maxim guns and rifles defeated the Mahdist Sudanese forces. The Mahdist Khalifa Abdallahi was killed. Sudan came under Anglo-Egyptian control. Winston Churchill participated as a young cavalry officer."
+    "description": "British General Kitchener's forces equipped with Maxim guns and rifles defeated the Mahdist Sudanese forces. The Mahdist Khalifa Abdallahi was killed. Sudan came under Anglo-Egyptian control. Winston Churchill participated as a young cavalry officer.",
+    "endYear": 1898
   },
   {
     "type": "event",
@@ -5010,14 +5056,16 @@
     "category": "islamic-battle",
     "name": "Suez Crisis",
     "startYear": 1956,
-    "description": "Egypt's President Nasser nationalized the Suez Canal. Britain, France, and Israel invaded. US and Soviet pressure forced a withdrawal. A landmark moment for Arab nationalism and the decline of European colonial power."
+    "description": "Egypt's President Nasser nationalized the Suez Canal. Britain, France, and Israel invaded. US and Soviet pressure forced a withdrawal. A landmark moment for Arab nationalism and the decline of European colonial power.",
+    "endYear": 1957
   },
   {
     "type": "war",
     "category": "islamic-battle",
     "name": "Six-Day War",
     "startYear": 1967,
-    "description": "Israel launched a pre-emptive strike against Egypt, Jordan, and Syria, capturing the Sinai, Gaza, West Bank, and Golan Heights in six days. Jerusalem's Old City came under Israeli control. Reshaped the Middle East conflict for decades."
+    "description": "Israel launched a pre-emptive strike against Egypt, Jordan, and Syria, capturing the Sinai, Gaza, West Bank, and Golan Heights in six days. Jerusalem's Old City came under Israeli control. Reshaped the Middle East conflict for decades.",
+    "endYear": 1967
   },
   {
     "type": "event",
@@ -5039,7 +5087,8 @@
     "category": "islamic-battle",
     "name": "Yom Kippur War",
     "startYear": 1973,
-    "description": "Egypt and Syria launched a surprise attack on Israeli positions on Yom Kippur (October 1973). Initial Arab successes were reversed by Israeli counter-offensives. Led to the Camp David Accords (1978) and eventually Egypt-Israel peace (1979)."
+    "description": "Egypt and Syria launched a surprise attack on Israeli positions on Yom Kippur (October 1973). Initial Arab successes were reversed by Israeli counter-offensives. Led to the Camp David Accords (1978) and eventually Egypt-Israel peace (1979).",
+    "endYear": 1973
   },
   {
     "type": "war",
@@ -5123,7 +5172,8 @@
     "category": "world-war",
     "name": "Rwandan Genocide",
     "startYear": 1994,
-    "description": "In 100 days, approximately 800,000 Tutsi and moderate Hutu Rwandans were massacred by Hutu extremists. One of the fastest mass killings in history. International community failed to intervene. Led to major reforms in international humanitarian law."
+    "description": "In 100 days, approximately 800,000 Tutsi and moderate Hutu Rwandans were massacred by Hutu extremists. One of the fastest mass killings in history. International community failed to intervene. Led to major reforms in international humanitarian law.",
+    "endYear": 1994
   },
   {
     "type": "war",
@@ -5146,7 +5196,8 @@
     "category": "world-war",
     "name": "September 11 Attacks and Global War on Terror",
     "startYear": 2001,
-    "description": "Al-Qaeda attacked the US on September 11, 2001, killing nearly 3,000 people in New York, Washington DC, and Pennsylvania. Launched the US-led Global War on Terror, reshaping global security, privacy laws, and international relations."
+    "description": "Al-Qaeda attacked the US on September 11, 2001, killing nearly 3,000 people in New York, Washington DC, and Pennsylvania. Launched the US-led Global War on Terror, reshaping global security, privacy laws, and international relations.",
+    "endYear": 2021
   },
   {
     "type": "event",
@@ -5184,7 +5235,8 @@
     "category": "islamic-battle",
     "name": "Syrian Civil War",
     "startYear": 2011,
-    "description": "Uprising against President Bashar al-Assad escalated into a devastating multi-sided civil war involving Syrian government, rebel factions, ISIS, Kurdish forces, and foreign powers. Over 500,000 killed and 13 million displaced in one of the worst humanitarian crises of the 21st century."
+    "description": "Uprising against President Bashar al-Assad escalated into a devastating multi-sided civil war involving Syrian government, rebel factions, ISIS, Kurdish forces, and foreign powers. Over 500,000 killed and 13 million displaced in one of the worst humanitarian crises of the 21st century.",
+    "endYear": 2025
   },
   {
     "type": "war",
@@ -5207,7 +5259,8 @@
     "category": "world-war",
     "name": "Russia-Ukraine War",
     "startYear": 2022,
-    "description": "Russia launched a full-scale invasion of Ukraine on February 24, 2022, after annexing Crimea in 2014. The largest war in Europe since World War II. Ukraine mounted fierce resistance with Western support. Tens of thousands killed and millions displaced."
+    "description": "Russia launched a full-scale invasion of Ukraine on February 24, 2022, after annexing Crimea in 2014. The largest war in Europe since World War II. Ukraine mounted fierce resistance with Western support. Tens of thousands killed and millions displaced.",
+    "endYear": 2025
   },
   {
     "type": "event",
@@ -5221,6 +5274,7 @@
     "category": "islamic-battle",
     "name": "Gaza War (2023)",
     "startYear": 2023,
-    "description": "Following a Hamas attack on southern Israel on October 7, 2023, killing approximately 1,200 Israelis, Israel launched a massive military campaign in Gaza. One of the deadliest conflicts in the Palestinian-Israeli history, causing massive civilian casualties and a severe humanitarian crisis."
+    "description": "Following a Hamas attack on southern Israel on October 7, 2023, killing approximately 1,200 Israelis, Israel launched a massive military campaign in Gaza. One of the deadliest conflicts in the Palestinian-Israeli history, causing massive civilian casualties and a severe humanitarian crisis.",
+    "endYear": 2025
   }
 ]
