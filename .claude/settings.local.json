@@ -1,8 +1,17 @@
 {
   "permissions": {
     "allow": [
-      "WebSearch",
-      "WebFetch(domain:en.wikipedia.org)"
+      "Bash(python3 -c ' *)",
+      "Bash(node -e ' *)",
+      "Bash(git add *)",
+      "Bash(git commit -m ' *)",
+      "Bash(git push *)",
+      "Bash(git pull *)",
+      "Bash(powershell -command \"\\(Get-Content history_import.json | ConvertFrom-Json\\).Count\")",
+      "Bash(python -c \"import json; d=json.load\\(open\\('history_import.json',encoding='utf-8-sig'\\)\\); cats={}; [cats.update\\({x['category']: cats.get\\(x['category'],0\\)+1}\\) for x in d]; [print\\(f'{v:4d} {k}'\\) for k,v in sorted\\(cats.items\\(\\), key=lambda x:-x[1]\\)]\")",
+      "Bash(python -c ' *)",
+      "Bash(git rm *)",
+      "Bash(del history_supplement.json)"
     ]
   }
 }
