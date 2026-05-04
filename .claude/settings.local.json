@@ -1,12 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "Bash(git mv *)",
-      "Bash(git add *)",
-      "Bash(git commit -m ' *)",
-      "Bash(git push *)",
-      "Bash(git commit -m 'Fix admin UI not showing after login *)",
-      "Bash(git commit -m 'Add Ctrl+Shift+L keyboard shortcut for admin login *)"
+      "WebSearch",
+      "WebFetch(domain:en.wikipedia.org)"
     ]
   }
 }
