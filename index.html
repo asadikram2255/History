@@ -7470,7 +7470,27 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
             rebuildData();
         }
 
+        function deduplicateRawData() {
+            const seen = new Map();
+            const deduped = [];
+            for (const item of rawData) {
+                if (item.isGenerated) continue; // skip generated, they get rebuilt
+                const key = (item.name || '').trim().toLowerCase() + '|' + item.startYear;
+                if (!seen.has(key)) {
+                    seen.set(key, true);
+                    deduped.push(item);
+                }
+            }
+            if (deduped.length !== rawData.filter(i => !i.isGenerated).length) {
+                const removed = rawData.filter(i => !i.isGenerated).length - deduped.length;
+                console.log(`[dedup] Removed ${removed} duplicate entries from rawData.`);
+                rawData = deduped;
+                saveToFirestore(); // persist the cleaned data back to Firestore
+            }
+        }
+
         function rebuildData() {
+            deduplicateRawData();
             const nonGenerated = rawData.filter(item => !item.isGenerated);
             const personalities = nonGenerated.filter(item => item.type === 'personality');
             const generatedEvents = generatePersonalityEvents(personalities);
@@ -8462,8 +8482,17 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
                     return;
                 }
 
-                // Append and save
-                rawData.push(...parsed);
+                // Append only items not already present (prevent duplicate imports)
+                const existingKeys = new Set(
+                    rawData.filter(i => !i.isGenerated)
+                           .map(i => (i.name || '').trim().toLowerCase() + '|' + i.startYear)
+                );
+                const newItems = parsed.filter(i => {
+                    const key = (i.name || '').trim().toLowerCase() + '|' + i.startYear;
+                    return !existingKeys.has(key);
+                });
+                const skipped = parsed.length - newItems.length;
+                rawData.push(...newItems);
                 saveToFirestore();
                 rebuildData();
                 calculateEventYears();
@@ -8471,7 +8500,8 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
                 updateDisplay(currentYear);
 
                 feedback.style.color = '#92D050';
-                feedback.textContent = `✅ ${parsed.length} item${parsed.length !== 1 ? 's' : ''} imported successfully!`;
+                feedback.textContent = `✅ ${newItems.length} item${newItems.length !== 1 ? 's' : ''} imported successfully!` +
+                    (skipped > 0 ? ` (${skipped} duplicate${skipped !== 1 ? 's' : ''} skipped)` : '');
                 textarea.value = '';
                 setTimeout(() => overlay.classList.remove('active'), 1500);
             });
