@@ -12,7 +12,8 @@
       "Bash(python -c ' *)",
       "Bash(git rm *)",
       "Bash(del history_supplement.json)",
-      "Bash(python)"
+      "Bash(python)",
+      "Bash(grep -v \"//.*rawData\\\\|//.*snap\")"
     ]
   }
 }
