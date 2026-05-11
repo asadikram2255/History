@@ -13,7 +13,10 @@
       "Bash(git rm *)",
       "Bash(del history_supplement.json)",
       "Bash(python)",
-      "Bash(grep -v \"//.*rawData\\\\|//.*snap\")"
+      "Bash(grep -v \"//.*rawData\\\\|//.*snap\")",
+      "Bash(grep -v \"description\\\\|//\")",
+      "mcp__Claude_in_Chrome__tabs_context_mcp",
+      "Bash(grep -v \"description\\\\|name.*:\\\\|startYear\\\\|endYear\\\\|category\\\\|type.*:\\\\|//\")"
     ]
   }
 }
