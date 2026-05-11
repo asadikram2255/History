@@ -1091,7 +1091,7 @@
                     <div class="nav-arrow" id="nextArrow">▶</div>
                     <!-- Moved year-range inside slider-wrapper -->
                     <div class="year-range">
-                        <span>1000 BCE        </span>
+                        <span>4000 BCE</span>
                         <span>2025 CE</span>
                     </div>
                 </div>
@@ -9025,7 +9025,7 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
             }
 
             elements.erasContent.innerHTML = activeEras.map(era => `
-                <div class="timeline-item era-item ${escapeHtml(era.category)}">
+                <div class="timeline-item era-item ${escapeHtml(era.category)}" data-index="${era.originalIndex}">
                     ${createDotsMenu(era.originalIndex)}
                     <div class="item-title">${escapeHtml(era.name)}</div>
                     <div class="item-subtitle">${formatYearRange(era.startYear, era.endYear)}</div>
@@ -9052,7 +9052,7 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
             }
 
             elements.eventsContent.innerHTML = yearEvents.map(event => `
-                <div class="timeline-item event-item ${escapeHtml(event.category)}">
+                <div class="timeline-item event-item ${escapeHtml(event.category)}" data-index="${event.originalIndex}">
                     ${createDotsMenu(event.originalIndex)}
                     <div class="item-title">${formatYear(event.startYear)}</div>
                     <div class="item-subtitle">${escapeHtml(event.name)}</div>
@@ -9081,7 +9081,7 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
             }
 
             elements.warsContent.innerHTML = activeWars.map(war => `
-                <div class="timeline-item war-item ${escapeHtml(war.category || '')}">
+                <div class="timeline-item war-item ${escapeHtml(war.category || '')}" data-index="${war.originalIndex}">
                     ${createDotsMenu(war.originalIndex)}
                     <div class="item-title">${escapeHtml(war.name)}</div>
                     <div class="item-subtitle">${formatYearRange(war.startYear, war.endYear)}</div>
@@ -9111,7 +9111,7 @@ The victory opened the way for rapid Muslim expansion across the peninsula, lead
             }
 
             elements.personalitiesContent.innerHTML = alivePersonalities.map(person => `
-                <div class="timeline-item person-item ${escapeHtml(person.category)}">
+                <div class="timeline-item person-item ${escapeHtml(person.category)}" data-index="${person.originalIndex}">
                     ${createDotsMenu(person.originalIndex)}
                     <div class="item-title">${escapeHtml(person.name)}</div>
                     <div class="item-subtitle">${formatYearRange(person.startYear, person.endYear)}</div>
@@ -9769,10 +9769,8 @@ document.querySelector(".content-area").addEventListener("click", function (e) {
     const subtitle = item.querySelector(".item-subtitle")?.innerText || "";
     const description = item.querySelector(".item-description")?.innerText || "";
 
-    // Get item ID from dropdown's onclick handler
-    const dropdownBtn = item.querySelector(".dropdown-menu button");
-    const onclickAttr = dropdownBtn?.getAttribute("onclick");
-    const itemId = onclickAttr ? parseInt(onclickAttr.match(/\d+/)[0]) : null;
+    // Use data-index attribute (works for all users, not just admin)
+    const itemId = item.dataset.index !== undefined ? parseInt(item.dataset.index) : null;
 
     if (itemId !== null) {
         openItemDetailModal(title, subtitle, description, itemId);
@@ -9811,32 +9809,31 @@ function isYearInRange(selectedYear, startYear, startEra, endYear, endEra) {
 </div>
 
 <script>
-    document.getElementById("openChatButton").onclick = () => {
+    // Safe wiring — elements may not exist if chat feature is disabled
+    const _openChat = document.getElementById("openChatButton");
+    if (_openChat) _openChat.onclick = () => {
         document.getElementById("chatModal").style.display = "block";
     };
-    document.getElementById("closeChatModal").onclick = () => {
+    const _closeChat = document.getElementById("closeChatModal");
+    if (_closeChat) _closeChat.onclick = () => {
         document.getElementById("chatModal").style.display = "none";
         document.getElementById("chatResponse").innerHTML = '';
         document.getElementById("chatSources").innerHTML = '';
     };
-    document.getElementById("sendChatButton").onclick = async () => {
+    const _sendChat = document.getElementById("sendChatButton");
+    if (_sendChat) _sendChat.onclick = async () => {
         const input = document.getElementById("chatInput").value.trim();
         if (!input) return;
-
         const resBox = document.getElementById("chatResponse");
         const sourcesBox = document.getElementById("chatSources");
         resBox.innerHTML = "Thinking...";
         sourcesBox.innerHTML = "";
-
         try {
             const res = await fetch("http://127.0.0.1:5000/chat", {
                 method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
+                headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ message: input })
             });
-
             const data = await res.json();
             resBox.innerHTML = `<strong>Answer:</strong> ${data.response}`;
             if (data.sources && data.sources.length > 0) {
