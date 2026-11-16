@@ -2639,7 +2639,7 @@
     "category": "islamic-dynasty",
     "name": "Zengid Dynasty",
     "startYear": 1127,
-    "endYear": 1250,
+    "endYear": 1222,
     "description": "Dynasty of Atabeg governors in Mosul and Syria. Unified Muslim Syria against the Crusaders and laid the groundwork for Saladin's reconquest of Jerusalem. Produced the great commander Nur al-Din Zengi."
   },
   {
@@ -4143,7 +4143,7 @@
     "category": "mughal-emperors",
     "name": "Islam Shah Suri",
     "startYear": 1545,
-    "endYear": 1554,
+    "endYear": 1553,
     "description": "Son and successor of Sher Shah Suri. Continued his father's administrative reforms but faced court rebellions. He died young, and the Sur dynasty quickly fractured into competing claimants, allowing Humayun to return."
   },
   {
@@ -4399,14 +4399,14 @@
     "category": "ghaznavid-sultans",
     "name": "Masud I of Ghazni — Ghaznavid Sultan",
     "startYear": 1031,
-    "endYear": 1040,
+    "endYear": 1041,
     "description": "Son of Mahmud. Lost the decisive Battle of Dandanaqan (1040) to the Seljuk Turks, which ended Ghaznavid control of Khorasan and reduced them to a regional power in Afghanistan and Punjab."
   },
   {
     "type": "personality",
     "category": "ghaznavid-sultans",
     "name": "Mawdud of Ghazni — Ghaznavid Sultan",
-    "startYear": 1040,
+    "startYear": 1041,
     "endYear": 1048,
     "description": "Son of Masud I who came to power by defeating his uncle Muhammad. Attempted to recover Khorasan from the Seljuks but failed. The Ghaznavid realm was now confined to Afghanistan and Sindh."
   },
