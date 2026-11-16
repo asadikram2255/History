@@ -44,7 +44,7 @@
     "category": "non-muslim-rulers",
     "name": "Holy Roman Empire",
     "startYear": 962,
-    "endYear": 1500,
+    "endYear": 1806,
     "description": "Rise of the Holy Roman Empire and formation of feudal states in Europe."
   },
   {
@@ -684,7 +684,7 @@
     "type": "era",
     "category": "custom-era",
     "name": "Mughal Empire",
-    "startYear": 1562,
+    "startYear": 1526,
     "endYear": 1857,
     "description": "An Islamic imperial power that ruled much of the Indian subcontinent. Renowned for its architectural achievements (Taj Mahal), administrative sophistication, and cultural synthesis of Islamic and Indian traditions. (End year here refers to the formal end after the Indian Rebellion)."
   },
@@ -769,14 +769,14 @@
     "category": "custom-era",
     "name": "Maccabean Revolt and Hasmonean Kingdom (Jerusalem)",
     "startYear": -167,
-    "endYear": -160,
+    "endYear": -63,
     "description": "A Jewish revolt against Hellenistic rule leads to the establishment of the independent Hasmonean Kingdom, which expands its control over much of Palestine."
   },
   {
     "type": "event",
     "category": "custom-event",
     "name": "Roman Conquest of Jerusalem",
-    "startYear": 63,
+    "startYear": -63,
     "description": "Roman General Pompey conquers Jerusalem, ending Hasmonean independence and establishing Roman rule over Judea."
   },
   {
@@ -1069,7 +1069,7 @@
     "category": "custom-era",
     "name": "Median Empire",
     "startYear": -678,
-    "endYear": -650,
+    "endYear": -550,
     "description": "The Median Empire was an ancient Iranian power that emerged in the 7th century BCE, centered in Ecbatana (modern Hamadan, Iran). They are noted for their significant role in the downfall of the Neo-Assyrian Empire, particularly in the sacking of Nineveh in 612 BCE alongside the Babylonians. Under King Cyaxares, the Median kingdom expanded its influence across the Iranian plateau and parts of Anatolia, becoming one of the major powers in the ancient Near East alongside Babylon, Lydia, and Egypt. The empire eventually fell to Cyrus the Great of Persia, who was a vassal of the Medes, marking the rise of the Achaemenid Empire."
   },
   {
@@ -1205,7 +1205,7 @@
     "type": "event",
     "category": "custom-event",
     "name": "Assyrian Invasion of Egypt",
-    "startYear": -678,
+    "startYear": -671,
     "description": "Esarhaddon of Assyria launches a major military campaign against Egypt, successfully capturing Memphis and temporarily bringing the land of the pharaohs under Assyrian control. This marked the height of Assyrian territorial expansion, making it the first empire to control territories spanning from Iran to Egypt. The conquest demonstrated advanced Assyrian siege warfare and logistics capabilities."
   },
   {
@@ -2263,7 +2263,7 @@
     "category": "sahabah",
     "name": "Abu Sufyan ibn Harb (RA)",
     "startYear": 560,
-    "endYear": 650,
+    "endYear": 653,
     "description": "Leader of Quraysh and longtime opponent of the Prophet. Embraced Islam at the Conquest of Mecca in 630 CE. Father of Muawiyah ibn Abi Sufyan. Lost his eye at the Battle of Taif."
   },
   {
@@ -4063,7 +4063,7 @@
     "category": "safavid-shahs",
     "name": "Shah Ismail II — Safavid Shah",
     "startYear": 1576,
-    "endYear": 1578,
+    "endYear": 1577,
     "description": "Son of Tahmasp who came to power from long imprisonment. Briefly showed Sunni sympathies which alarmed the Shia clergy. Died after only two years, possibly from drug overdose."
   },
   {
@@ -5606,8 +5606,8 @@
     "type": "event",
     "category": "world-event",
     "name": "Construction of the Great Pyramid of Giza",
-    "startYear": -2560,
-    "endYear": -2540,
+    "startYear": -2580,
+    "endYear": -2560,
     "description": "Built under Pharaoh Khufu (Cheops) of the 4th Dynasty. The Great Pyramid stood as the tallest man-made structure for 3,800 years. One of the Seven Wonders of the Ancient World and the only one still largely intact. Built with approximately 2.3 million limestone blocks."
   },
   {
@@ -5667,7 +5667,7 @@
   {
     "type": "event",
     "category": "world-event",
-    "name": "Completion of the Great Wall of China",
+    "name": "Qin Unification of China and Linking of the Great Wall",
     "startYear": -221,
     "description": "Qin Shi Huang unified the seven Warring States and linked earlier defensive walls into the Great Wall. Also created the first unified Chinese state, standardized weights, measures, and writing. One of the most ambitious construction projects in human history."
   },
